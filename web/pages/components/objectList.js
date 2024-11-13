@@ -1,6 +1,7 @@
 import styles from "../../styles/Objectlist.module.css";
 import React from "react";
 import axios from "axios";
+import * as constant from "../minioconstant"
 
 import { BsFillImageFill } from "react-icons/bs";
 
@@ -9,7 +10,7 @@ export default function ObjectList({ object, index }) {
 
   const deleteObject = (object) => {
     axios.delete(`http://localhost:8081/minio/${object}`);
-   //axios.delete(`${miniosrv}${object}`);
+   //axios.delete(`${constant._MINIO_SRV_}/${object}`);
  
    setDisable(true);
   };
@@ -31,7 +32,7 @@ export default function ObjectList({ object, index }) {
         <p className={disable ? styles.objectNameDisable : styles.objectName}>
           <a
             href={`http://localhost:8081/minio/${object}`}
-            //href={`${miniosrv}${object}`}
+            //href={`${constant._MINIO_SRV_}/${object}`}
             target="_blank"
             className={disable ? styles.disableObjectName : styles.objectName}
           >

@@ -4,14 +4,16 @@ import React from "react";
 import axios from "axios";
 import ObjectList from "./components/objectList";
 import UploadFile from "./components/uploadFile";
-import { _MINIO_SRV_} from './constant';
+// import { _MINIO_CMD_GET_ALL_} from './constant';
+import * as constant from "./minioconstant"
 
 export default function Home() {
   const [objects, setObjects] = React.useState([]);
 
+  //
   React.useEffect(() => {
-    axios.get("http://localhost:8081/minio/getAll").then((response) => {
-     // axios.get(_MINIO_SRV_ + "/getAll").then((response) => {
+    //axios.get("http://localhost:8081/minio/getAll").then((response) => {
+      axios.get(constant._MINIO_CMD_GET_ALL_).then((response) => {
       setObjects(response.data);
     });
   }, []);

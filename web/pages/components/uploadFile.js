@@ -2,8 +2,8 @@ import styles from "../../styles/UploadFile.module.css";
 import React from "react";
 import { BiImport } from "react-icons/bi";
 import axios from "axios";
-import { miniosrv } from '../constant';
-
+//import { miniosrv } from '../minioconstant';
+import * as constante from '../minioconstant';
 
 export default function UploadFile() {
   const [image, setImage] = React.useState({ preview: "", raw: "" });
@@ -28,8 +28,8 @@ export default function UploadFile() {
     bodyFormData.append("file", image.raw);
     axios({
       method: "POST",
-      //url: "http://localhost:8081/multiupload/files",
-      url: `${miniosrv}multiupload/files`,
+      url: "http://localhost:8081/multiupload/files",
+      //url: `${constante._MINIO_SRV_}/multiupload/files`,
             data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
